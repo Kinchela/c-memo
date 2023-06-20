@@ -1,6 +1,10 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+
+  # host should be set to the actual host of your application. -- devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

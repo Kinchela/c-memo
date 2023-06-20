@@ -14,6 +14,8 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+    <p class="notice"><%= notice %></p> #devise
+    <p class="alert"><%= alert %></p> #devise
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
