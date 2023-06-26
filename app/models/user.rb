@@ -5,6 +5,16 @@ class User < ApplicationRecord
          :registerable,
          :recoverable, 
          :rememberable, 
-         :validatable,
-         :confirmable           #it is not default
+         :validatable
+        #  :confirmable           #it is not default
+
+  validates :name, uniqueness: true
+
+  def email_required?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
+  end
 end
