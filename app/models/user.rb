@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :recoverable, 
          :rememberable, 
          :validatable
-        #  :confirmable           #it is not default
 
   validates :name, uniqueness: true
 

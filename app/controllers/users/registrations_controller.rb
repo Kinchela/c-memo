@@ -11,6 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource                                                                                      # it was comment before
   def create                                                                                            
     super
+    # log_in @user                                                                                      # check this later
   end
 
   # GET /resource/edit
