@@ -14,10 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # log_in @user                                                                                      # check this later
   end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  # GET /resource/edit                                                                                  # it was comment before
+  def edit
+    super
+  end
 
   # PUT /resource
   # def update

@@ -1,0 +1,25 @@
+<% provide(:title, "Measurement") %>
+<h1>Measurement</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @child, scope: :child) do |f| %>
+
+      <%= f.label :name, for: :child_name %>
+      <%= f.text_field :name, id: :child_name, class: 'form-control' %>
+
+      <%= f.label :date, for: :child_date %>
+      <%= f.date_select :date, {}, id: :child_date, class: 'form-control' %>
+
+      <%= f.label :height, for: :child_height %>
+      <%= f.number_field :height, id: :child_height, step: "0.1", class: 'form-control' %>
+
+      <%= f.submit "submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<% if @children_by_day.present? %>
+  <%= line_chart @children_by_day.transform_values { |children| children.pluck(:height) } %>
+<% else %>
+  <p>No data available</p>
+<% end %>
