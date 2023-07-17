@@ -18,4 +18,5 @@ class User < ApplicationRecord
   end
 
   has_many :children
+  has_many :wishlists
 end
