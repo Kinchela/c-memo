@@ -17,6 +17,11 @@ class User < ApplicationRecord
     false
   end
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   has_many :children
   has_many :wishlists
+  has_many :microposts, dependent: :destroy
 end

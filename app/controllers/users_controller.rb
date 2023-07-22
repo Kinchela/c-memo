@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!              #, only: [:action]
-  before_action :current_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :user_signed_in?, only: [:index, :show, :edit, :update, :destroy]
   before_action :admin_user,     only: :destroy
 
   #helpers
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
   
   def new
@@ -25,6 +26,10 @@ class UsersController < ApplicationController
   end
 
   private
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url, status: :see_other) unless current_user?(@user)
+    end
 
     def admin_user
       redirect_to(root_url, status: :see_other) unless current_user.admin?
