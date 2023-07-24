@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!              #, only: [:action]
-  before_action :user_signed_in?, only: [:index, :show, :edit, :update, :destroy]
-  before_action :admin_user,     only: :destroy
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  # before_action :user_signed_in?, only: [:index, :show, :edit, :update, :destroy]
+  before_action :admin_user,         only: :destroy
 
   #helpers
   #user_signed_in?  --to verify if a user is signed in
