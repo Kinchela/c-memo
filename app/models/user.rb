@@ -21,7 +21,7 @@ class User < ApplicationRecord
     Micropost.where("user_id = ?", id)
   end
 
-  has_many :children
-  has_many :wishlists
+  has_many :children #, dependent: :destroy
+  has_many :wishlists #, dependent: :destroy
   has_many :microposts, dependent: :destroy
 end

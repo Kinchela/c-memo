@@ -1,4 +1,7 @@
 class Child < ApplicationRecord
   belongs_to :user
-  validates :name, :date, :height, presence: true
+  has_many :records, inverse_of: :child
+  accepts_nested_attributes_for :records, allow_destroy: true
+
+  validates :name, presence: true
 end

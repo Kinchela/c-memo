@@ -1,29 +1,55 @@
 class ChildrenController < ApplicationController
 
   def index
-    @children = current_user.children.order(:date).all
-    @children_by_day = @children.group_by { |child| child.date.to_date } unless @children.empty?
-
-    puts @children_by_day.inspect
+    if user_signed_in?
+      @child = current_user.children.build
+      @child.records.build
+      @height_data = current_user.children.map do |child|
+        {
+          name: child.name,
+          data: child.records.order(date: :asc).pluck(:date, :height).to_h
+        }
+      end
+      @weight_data = current_user.children.map do |child|
+        {
+          name: child.name,
+          data: child.records.order(date: :asc).pluck(:date, :weight).to_h
+        }
+      end
+    end
   end
- 
+
   def create
-    @child = current_user.children.build(data_params)
-    # @child = Child.new(data_params)
-    puts data_params.inspect
-    if @child.save 
-      puts "Child record saved successfully."
-      redirect_to children_path, notice: 'Child successfully created.'
+    name = data_params[:name]
+    records_attributes = data_params[:records_attributes]
+
+    @child = current_user.children.find_by(name: name)
+
+    if @child.nil?
+      @child = current_user.children.build(data_params)
     else
-      puts "Error saving child record: #{@child.errors.full_messages}"
+      records_attributes.each do |index, records_attribute|
+        date = records_attribute[:date]
+        height = records_attribute[:height]
+        weight = records_attribute[:weight]
+        @child.records.build(date: date, height: height, weight: weight)
+      end
+    end
+
+    if @child.save 
+      flash[:success] = 'chart successfully created.'
+      redirect_to children_path
+    else
       flash.now[:alert] = 'Error creating child.'
-      render 'static_pages/home', status: :unprocessable_entity
+      render 'children/index', status: :unprocessable_entity
     end
   end
 
   private
-  
+
   def data_params
-    params.require(:child).permit(:name, :date, :height)
+    params.require(:child).
+      permit(:name, records_attributes: [:id, :child_id, :date, :height, :weight, :_destroy])
   end
 end
+

@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+#rails db:seed
+#Delete all records from the children and records tables
+Child.all.each do |child|
+  child.records.destroy_all
+end
+Child.destroy_all

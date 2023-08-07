@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_112054) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_051811) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,10 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112054) do
 
   create_table "children", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.date "date"
-    t.decimal "height", precision: 4, scale: 1
-    t.decimal "weight", precision: 5, scale: 2
-    t.decimal "waist", precision: 4, scale: 1
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,6 +55,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112054) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "date"
+    t.decimal "height", precision: 4, scale: 1
+    t.decimal "weight", precision: 5, scale: 2
+    t.bigint "child_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_records_on_child_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -86,5 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112054) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "children", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "records", "children"
   add_foreign_key "wishlists", "users"
 end

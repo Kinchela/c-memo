@@ -3,6 +3,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @wishlist) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :list %>
       <%= f.text_area :list, class: 'form-control' %>

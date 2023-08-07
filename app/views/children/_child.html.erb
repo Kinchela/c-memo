@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @child, url: children_path do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.fields_for :records do |records_form| %>
+        <%= render 'shared/error_messages', object: records_form.object %>
+        <%= records_form.label :date, "日付" %>
+        <%= records_form.date_field :date, class: 'form-control' %>
+
+        <%= records_form.label :height, "身長 (cm)" %>
+        <%= records_form.number_field :height, step: "0.1", class: 'form-control' %>
+
+        <%= records_form.label :weight, "体重 (kg)" %>
+        <%= records_form.number_field :weight, step: "0.01", class: 'form-control' %>
+      <% end %>
+
+      <%= f.submit "submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
