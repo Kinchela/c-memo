@@ -7,20 +7,27 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "名前" %>
+    <em>(16 文字以下)</em><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "username", class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :name_id, "ユーザーID" %>
+    <em>(6 文字以上 16 文字以下)</em><br />
+    <%= f.text_field :name_id, autofocus: true, autocomplete: "name_id", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "パスワード（確認用）" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
   </div>
 
