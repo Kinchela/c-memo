@@ -3,13 +3,13 @@
 
 <%= render 'child', child: @child %>
 
-<h3>身長</3>
+<h2>身長</2>
 <% if @height_data.present? %>
   <%= line_chart @height_data, library: { title: { text: 'Height' } } %>
 <% else %>
   <p>No data available</p>
 <% end %>
-<h3>体重</h3>
+<h2>体重</h2>
 <% if @height_data.present? %>
   <%= line_chart @weight_data, library: { title: { text: 'Weight' } } %>
 <% else %>

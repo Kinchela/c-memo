@@ -1,5 +1,4 @@
 class MicropostsController < ApplicationController
-  # before_action :user_signed_in?, only: [:create, :destroy]
   before_action :authenticate_user!, only: [:create, :destroy]
   before_action :correct_user,    only: :destroy
 
@@ -7,7 +6,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.image.attach(params[:micropost][:image])
     if @micropost.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "日記投稿完了"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
@@ -17,7 +16,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "Micropost deleted"
+    flash[:success] = "日記削除完了"
     if request.referrer.nil?
       redirect_to root_url, status: :see_other
     else

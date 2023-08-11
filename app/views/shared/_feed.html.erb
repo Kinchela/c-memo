@@ -4,4 +4,6 @@
   </ol>
   <%= will_paginate @feed_items,
                     params: { controller: :static_pages, action: :home } %>
+<% else %>
+  <p class="no-data">Empty</p>
 <% end %>

@@ -15,4 +15,4 @@ Child.destroy_all
 #Delete all records from the users table
 Wishlist.delete_all
 Micropost.delete_all
-User.delete_all
+# User.delete_all

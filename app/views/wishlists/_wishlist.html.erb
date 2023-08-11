@@ -1,0 +1,16 @@
+<% if @wishlists_day_count.present? %>
+  <% @wishlists_day_count.each do |w| %>
+    <li class="wishlist">
+      <span class="left-section">
+        <strong>・<%= w[:wishlist].list %></strong>
+      </span>
+      <span class="right-section">
+        期日：<%= w[:wishlist].due_date %>
+        (残日数：<%= w[:day_count] %>)
+        <em><%= link_to "削除", wishlist_path(w[:wishlist]), data: { "turbo-method": :delete } %></em>
+      </span>
+    </li>
+  <% end %>
+<% else %>
+    <P class="no-data">Empty</p>
+<% end %>

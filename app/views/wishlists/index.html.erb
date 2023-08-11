@@ -1,14 +1,13 @@
 <% provide(:title, "Wish Lists") %>
-<h1>Wish Lists</h1>
+<h1>欲しい物リスト</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <% @wishlists_day_count.each do |w| %>
-      <p>・<%= w[:wishlist].list %>
-        due date: <%= w[:wishlist].due_date %> 
-        (Day Count: <%= w[:day_count] %>)
-      </p>
-    <% end %>
-    <%= link_to "New Wish Lists", wishlists_new_path %>
+    <ul>
+      <%= render 'wishlist' %>
+    </ul>
+
+    <%= link_to "リスト追加", new_wishlist_path %>
   </div>
 </div>
+
