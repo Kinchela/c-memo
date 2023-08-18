@@ -1,7 +1,7 @@
 <li id="micropost-<%= micropost.id %>">
   <span class="content">
     <%= micropost.content %>
-    <% if micropost.image.attached? %>
+    <% if micropost.images.attached? %>
       <%= image_tag micropost.image.variant(:display) %>
     <% end %>
   </span>

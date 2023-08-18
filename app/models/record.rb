@@ -5,5 +5,6 @@ class Record < ApplicationRecord
   validates :date, presence: true   
   validates :height, presence: true, unless: proc { |s| s.weight.present? }
   validates :weight, presence: true, unless: proc { |s| s.height.present? }
-  # validate :weight, unless: "height.present?"
+  # validates :height, presence: true, unless weight?
+  # validates :weight, presence: true, unless height?
 end

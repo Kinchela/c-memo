@@ -10,7 +10,7 @@
   <p>No data available</p>
 <% end %>
 <h2>体重</h2>
-<% if @height_data.present? %>
+<% if @weight_data.present? %>
   <%= line_chart @weight_data, library: { title: { text: 'Weight' } } %>
 <% else %>
   <p>No data available</p>
