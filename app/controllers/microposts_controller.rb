@@ -4,9 +4,9 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    @micropost.image.attach(params[:micropost][:image])
+    @micropost.images.attach(params[:micropost][:images])
     if @micropost.save
-      flash[:success] = "日記投稿完了"
+      flash[:success] = "投稿完了"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])

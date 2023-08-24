@@ -22,6 +22,10 @@ class WishlistsController < ApplicationController
     @wishlist = current_user.wishlists.build(list_params)
     if @wishlist.save 
       redirect_to wishlists_path
+    else
+      # flash[:errors] = @wishlist.errors.full_messages
+      # redirect_to wishlists_path
+      render 'new', status: :unprocessable_entity
     end
   end
 

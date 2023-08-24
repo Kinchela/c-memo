@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Child, type: :model do
-
-  # let!(:user) {
-  #   User.new(name: "Taro", name_id: "taroparent", id: 1)
-  # }
-  # subject { 
-  #   described_class.new(name: "Kotaro",
-  #                       user: user
-  #   ) 
-  # }
   let!(:child) { create(:child) }
 
   describe "Associations" do
@@ -18,12 +9,11 @@ RSpec.describe Child, type: :model do
     it { should accept_nested_attributes_for(:records).allow_destroy(true) }
   end
 
-  it "is valid with valid attributes" do
-    expect(child).to be_valid
-  end
-
-  it "is not valid without a name" do
-    child.name = nil
-    expect(child).to_not be_valid
+  describe "Validations" do
+    it "is valid with valid attributes" do
+      expect(child).to be_valid
+    end
+    it { should validate_presence_of(:name) }
+    it { should validate_length_of(:name).is_at_most(16) }
   end
 end

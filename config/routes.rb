@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   # get 'users/new'
   root   'static_pages#home'
   get    "/about",         to: "static_pages#about"
-  get    "/children",      to: "children#index"
-  # get    "/wishlists",     to: "wishlists#index"
-  # get    "/wishlists/new", to: "wishlists#new"
   get    "/microposts",    to: "static_pages#home"
 
   devise_scope :user do

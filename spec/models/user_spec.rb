@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # subject {
-  #   described_class.new(name: "Taro",
-  #                       name_id: "taroparent"
-  #   )
-  # }
   let!(:user) { create(:user) }
 
   describe "Associations" do
@@ -18,17 +13,8 @@ RSpec.describe User, type: :model do
     it "is valid with valid attributes" do
       expect(user).to be_valid
     end
-
-    it "is not valid without a name" do
-      user.name = nil
-      expect(user).to_not be_valid
-    end
-
-    it "is not valid without a name_id" do
-      user.name_id = nil
-      expect(user).to_not be_valid
-    end
-
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:name_id) }
     it { should validate_uniqueness_of(:name_id).on(:create).ignoring_case_sensitivity }
     it { should validate_length_of(:name).is_at_most(16) }
     it { should validate_length_of(:name_id).

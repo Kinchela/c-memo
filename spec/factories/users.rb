@@ -4,5 +4,6 @@ FactoryBot.define do
     # name_id { "mystring" }
     sequence(:name_id) { |n| "mystring#{n}"}
     password { "Password123" }
+    password_confirmation { "Password123"}
   end
 end
