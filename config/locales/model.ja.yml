@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+    attributes:
+      wishlist:
+        due_date: '期日'
+        list: 'リスト'
+      child:
+        name: '名前'
+      child/records:
+        date: '日付'
+        height: '身長'
+        weight: '体重'
+      micropost:
+        content: '内容'
+        title: 'タイトル'

@@ -11,7 +11,7 @@ class Wishlist < ApplicationRecord
 
   def due_date_cannot_be_in_the_past
     if due_date.present? && due_date < Date.today
-      errors.add(:due_date, "過去の日付は使えません")
+      errors.add(:due_date, "（過去の日付は使えません）")
     end
   end
 end

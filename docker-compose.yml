@@ -9,8 +9,19 @@ services:
       - 3000:3000
     depends_on:
       - db
+      - selenium_chrome
     tty: true
     stdin_open: true
+    # environment:
+      # - SERVER_HOST=selenium_chrome
+      # - SERVER_PORT=4444
+    #   SELENIUM_DRIVER_URL: http://selenium-chrome:4444/wd/hub
+  selenium_chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    ports:
+      - 4444:4444
+      - 7900:7900
   db:
     image: mysql:latest
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
@@ -22,6 +33,6 @@ services:
       TZ: "Asia/Tokyo"
     ports:
       - "3306:3306"
-  
+
 volumes:
   db-volume:

@@ -57,8 +57,8 @@ gem 'devise-i18n'
 gem 'chartkick'
 gem 'groupdate'
 
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate', '~> 4.0'
+gem 'will_paginate-bootstrap-style'
 
 gem 'active_storage_validations'
 gem 'image_processing'
@@ -90,7 +90,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "selenium-webdriver", '~> 4.11.0'
+  # gem "webdrivers"  #This causes Webdrivers::BrowserNotFound
   gem "database_cleaner-active_record"
 end

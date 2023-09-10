@@ -1,8 +1,11 @@
 <li id="micropost-<%= micropost.id %>">
   <span class="content">
+    <strong id="title-font"><%= micropost.title %></strong><br>
     <%= micropost.content %>
     <% if micropost.images.attached? %>
-      <%= image_tag micropost.image.variant(:display) %>
+      <% micropost.images.each do |image| %>
+        <%= image_tag image.variant(:display) %>
+      <% end %>
     <% end %>
   </span>
   <span class="timestamp">

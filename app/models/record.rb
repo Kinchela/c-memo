@@ -8,3 +8,8 @@ class Record < ApplicationRecord
   # validates :height, presence: true, unless weight?
   # validates :weight, presence: true, unless height?
 end
+
+# validates :height, presence: true, if: :weight_nil?
+#   def weight_nil?
+#     true
+#   end

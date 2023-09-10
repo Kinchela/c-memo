@@ -19,7 +19,6 @@ RSpec.describe "Microposts", type: :request do
         sign_in user
         post microposts_path, params: { micropost: micropost_params }
         expect(response).to have_http_status(422)
-        # expect(response).to have_http_status(:redirect)
       end
     end
   end
