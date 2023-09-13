@@ -7,11 +7,11 @@
 <% if @height_data.present? %>
   <%= line_chart @height_data, library: { title: { text: 'Height' } } %>
 <% else %>
-  <p>No data available</p>
+  <p class='unavailable'>No data available</p>
 <% end %>
 <h2>体重</h2>
 <% if @weight_data.present? %>
   <%= line_chart @weight_data, library: { title: { text: 'Weight' } } %>
 <% else %>
-  <p>No data available</p>
+  <p class='unavailable'>No data available</p>
 <% end %>

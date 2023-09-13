@@ -1,7 +1,7 @@
 <li id="micropost-<%= micropost.id %>">
   <span class="content">
     <strong id="title-font"><%= micropost.title %></strong><br>
-    <%= micropost.content %>
+    <%= safe_join(micropost.content.split("\n"),tag(:br)) %>
     <% if micropost.images.attached? %>
       <% micropost.images.each do |image| %>
         <%= image_tag image.variant(:display) %>
