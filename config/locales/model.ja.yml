@@ -14,3 +14,7 @@ ja:
       micropost:
         content: '内容'
         title: 'タイトル'
+      user:
+        name: '名前'
+        name_id: 'ユーザーID'
+        password: 'パスワード'

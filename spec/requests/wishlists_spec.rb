@@ -42,6 +42,14 @@ RSpec.describe "Wishlists", type: :request do
       end
     end
   end
-end
 
-# destroy action should be written using system spec.
+  describe "DELETE /destroy" do
+    context "as a correct user" do
+      it "returns http redirect" do
+        sign_in user
+        delete wishlist_path(wishlist)
+        expect(response).to have_http_status(:redirect)
+      end
+    end
+  end
+end

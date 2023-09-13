@@ -14,7 +14,7 @@ RSpec.describe "Microposts", type: :request do
       end
     end
     context "with invalid attributes" do
-      it "returns http redirect" do
+      it "returns http unprocessable_entity" do
         micropost_params = attributes_for(:micropost, :invalid_attributes)
         sign_in user
         post microposts_path, params: { micropost: micropost_params }

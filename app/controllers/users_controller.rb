@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   #user_session  --you can access the session for this scope
   
   def show
-    # @user = User.find(params[:id])  # Is this unnecessacry including user view as I deleted user profile?
+    @user = User.find(params[:id])  # Is this unnecessacry including user view as I deleted user profile?
     # @microposts = @user.microposts.paginate(page: params[:page])
   end
 
