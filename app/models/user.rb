@@ -7,8 +7,9 @@ class User < ApplicationRecord
          :rememberable, 
          :validatable
 
-  validates :name, length: { maximum: 16,
-    wrong_length: "%{count}文字以下"}
+  validates :name, presence: true, length: { 
+    maximum: 16, wrong_length: "%{count}文字以下"
+  }
   validates :name_id, uniqueness: true, presence: true, 
     length: { in: 6..16, wrong_length: "%{count}文字の範囲"}
 

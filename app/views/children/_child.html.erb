@@ -7,7 +7,7 @@
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.fields_for :records do |records_form| %>
-        <%= render 'shared/error_messages', object: records_form.object %>
+        <% if false %><%= render 'shared/error_messages', object: records_form.object %><% end %>
         <%= records_form.label :date, "日付" %>
         <%= records_form.date_field :date, class: 'form-control' %>
 

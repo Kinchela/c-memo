@@ -37,10 +37,10 @@ class ChildrenController < ApplicationController
     end
 
     if @child.save 
-      flash[:success] = 'chart successfully created.'
+      # flash[:success] = 'chart successfully created.'
       redirect_to children_path
     else
-      flash.now[:alert] = 'Error creating child.'
+      # flash.now[:alert] = 'Error creating child.'
       render 'children/index', status: :unprocessable_entity
     end
   end

@@ -1,7 +1,15 @@
 FactoryBot.define do
   factory :wishlist do
-    due_date { "2023-07-14" }
+    due_date { 1.week.from_now }
     list { "MyString" }
-    user { nil }
+    association :user
+
+    trait :invalid_due_date do
+      due_date { Date.yesterday }
+    end
+
+    trait :valid_due_date do
+      due_date { Date.today }
+    end
   end
 end
