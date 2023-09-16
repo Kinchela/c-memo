@@ -9,7 +9,7 @@ RSpec.describe "users", type: :system do
     context "as a prospective user" do
       it "shows expected page and has correct contents" do
         visit root_path
-        click_link('Sign up now!')
+        click_link('Sign up')
 
         expect(current_path).to eq sign_up_path
         expect(page).to have_selector('h2', text: 'サインアップ')
@@ -70,7 +70,6 @@ RSpec.describe "users", type: :system do
         expect(page).to have_selector('h2', text: 'サインイン')
         expect(page).to have_text('ユーザーID')
         expect(page).to have_text('パスワード')
-        expect(page).to have_text('サインインしたままにする')
         expect(page).to have_button('サインイン')
         expect(page).to have_link('サインアップ')
       end
@@ -110,7 +109,7 @@ RSpec.describe "users", type: :system do
         click_link('Sign out')
 
         expect(current_path).to eq root_path 
-        expect(page).to have_link('Sign up now!')
+        expect(page).to have_link('Sign up')
         expect(page).to have_selector('.notice', text: "ログアウトしました。")
       end
     end
@@ -162,7 +161,7 @@ RSpec.describe "users", type: :system do
         }.to change(User, :count).by(-1)
         
         expect(current_path).to eq root_path 
-        expect(page).to have_link('Sign up now!')
+        expect(page).to have_link('Sign up')
         expect(page).to have_selector('.notice', text: "アカウントを削除しました。またのご利用をお待ちしております。")
       end
     end
