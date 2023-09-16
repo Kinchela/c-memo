@@ -4,7 +4,8 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    @micropost.images.attach(params[:micropost][:images])
+    # @micropost.images.attach(params[:micropost][:images])
+    @micropost.images.attach(params[:images])
     if @micropost.save
       flash[:success] = "投稿完了"
       redirect_to root_url
@@ -35,3 +36,4 @@ class MicropostsController < ApplicationController
       redirect_to root_url, status: :see_other if @micropost.nil?
     end
 end
+

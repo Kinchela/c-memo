@@ -3,9 +3,11 @@
     <strong id="title-font"><%= micropost.title %></strong><br>
     <%= safe_join(micropost.content.split("\n"),tag(:br)) %>
     <% if micropost.images.attached? %>
+    <div class="image-container">
       <% micropost.images.each do |image| %>
-        <%= image_tag image.variant(:display) %>
+        <%= image_tag image.variant(:display), class: "micropost-image" %>
       <% end %>
+    </div>
     <% end %>
   </span>
   <span class="timestamp">

@@ -54,9 +54,28 @@ p {
   line-height: 1.7em;
 }
 
+#sub {
+  text-align: center;
+}
+
+.icon {
+  text-align: center;
+}
+
 .no-data {
   text-align: center;
   color: #a9a9a9;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.micropost-image {
+  margin: 5px; 
+  object-fit: contain;
 }
 
 .unavailable {

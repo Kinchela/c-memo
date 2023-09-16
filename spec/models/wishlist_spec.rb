@@ -25,7 +25,7 @@ RSpec.describe Wishlist, type: :model do
       it "is not valid with past due date" do
         wishlist = build(:wishlist, :invalid_due_date)
         expect(wishlist).not_to be_valid
-        expect(wishlist.errors[:due_date]).to include("過去の日付は使えません")
+        expect(wishlist.errors[:due_date]).to include("（過去の日付は使えません）")
       end
     end
   end
