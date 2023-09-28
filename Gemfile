@@ -94,3 +94,7 @@ group :test do
   # gem "webdrivers"  #This causes Webdrivers::BrowserNotFound
   gem "database_cleaner-active_record"
 end
+
+group :production do
+  gem "aws-sdk-s3", require: false
+end
